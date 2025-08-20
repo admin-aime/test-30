@@ -1,15 +1,42 @@
-body {
+:root {
+      --bg-primary: #f4f4f4;
+      --bg-secondary: white;
+      --text-primary: #333;
+      --text-secondary: black;
+      --accent-color: #333;
+      --accent-text: white;
+      
+      color-scheme: light dark;
+    }
+
+    [data-theme='dark'] {
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --text-primary: #e0e0e0;
+      --text-secondary: #ffffff;
+      --accent-color: #bb86fc;
+      --accent-text: #000;
+    }
+
+    * {
+      transition: 
+        background-color 0.3s ease,
+        color 0.3s ease;
+    }
+
+    body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
-      background-color: #f4f4f4;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
     }
 
     header {
-      background-color: #333;
-      color: white;
+      background-color: var(--accent-color);
+      color: var(--accent-text);
       text-align: center;
       padding: 1rem;
     }
@@ -19,20 +46,31 @@ body {
       padding: 0;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 20px;
     }
 
     nav a {
-      color: white;
+      color: var(--accent-text);
       text-decoration: none;
     }
 
+    #theme-toggle {
+      background-color: transparent;
+      border: 1px solid var(--accent-text);
+      color: var(--accent-text);
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
     section {
-      background-color: white;
+      background-color: var(--bg-secondary);
       margin: 20px 0;
       padding: 20px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      color: var(--text-primary);
     }
 
     form {
@@ -43,11 +81,14 @@ body {
     input, textarea {
       margin-bottom: 10px;
       padding: 8px;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      border: 1px solid var(--text-primary);
     }
 
     button {
-      background-color: #333;
-      color: white;
+      background-color: var(--accent-color);
+      color: var(--accent-text);
       border: none;
       padding: 10px;
       cursor: pointer;
@@ -55,7 +96,17 @@ body {
 
     footer {
       text-align: center;
-      background-color: #333;
-      color: white;
+      background-color: var(--accent-color);
+      color: var(--accent-text);
       padding: 1rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
     }
